@@ -8,4 +8,5 @@
     echo " sedangkan umur doni sekarang ". hitungUmur(2001,2022). " tahun ";
     echo " dan umur rani sekarang ". hitungUmur(2003,2022). " tahun ";
     echo " dan umur siska sekarang" . hitungUmur(2004,2022). " tahun ";
+    echo " dan umur dani sekrang". hitungUmur(2005,2022). " tahun ";
 ?>
