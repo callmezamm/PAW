@@ -32,6 +32,12 @@
             </a>
         </div>
     </nav><br>
+    <div class="container">
+        <center>
+            <h1>PLAYLIST PILIHANMU</h1>
+            <P>CRUD (CREATE, READ, UPDATE, DELETE)</P>
+        </center>
+    </div>
     <section class="tabel">
         <div class="container">
             <table class="table table-hover table table-bordered">

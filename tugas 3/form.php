@@ -25,6 +25,12 @@
             </a>
         </div>
     </nav><br>
+        <div class="container">
+        <center>
+            <h1>MASUKKAN PLAYLIST PILIHANMU</h1>
+            <P>CRUD (CREATE, READ, UPDATE, DELETE)</P>
+        </center>
+    </div>
     <div class="container">
         <form method="post" action="action.php">
             <div class="mb-3">

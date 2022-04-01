@@ -35,6 +35,12 @@
         </div>
     </nav><br>
     <div class="container">
+        <center>
+            <h1>EDIT PLAYLIST PILIHANMU</h1>
+            <P>CRUD (CREATE, READ, UPDATE, DELETE)</P>
+        </center>
+    </div>
+    <div class="container">
         <form method="post" action="update.php">
             <?php
                 while ($row = mysqli_fetch_array($hasil))
