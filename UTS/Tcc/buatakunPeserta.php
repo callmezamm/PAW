@@ -6,19 +6,19 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Buat Akun Admin</title>
+    <title>Buat Akun Peserta TCC</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="css/signinPeserta.css">
     <!-- my css -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
      <!-- css bootstrap -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-     <link rel="shortcut icon" href="../img/1x/logo.png">
+     <link rel="shortcut icon" href="img/1x/logo.png">
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
 
@@ -37,7 +37,7 @@
     <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-  <?php
+    <?php
       include "koneksi.php";
 
       if (isset($_POST['submit'])) {
@@ -48,10 +48,10 @@
         $usersama = mysqli_query($koneksi, "SELECT userName FROM tbl_user where userName = '$userName'");
 
         if(mysqli_fetch_assoc($usersama)){
-          echo "<script>swal.fire('Gagal', 'Username Sudah Digunakan', 'error'), location.href='buatAkun.php'</script>";
+          echo "<script>swal.fire('Gagal', 'Username Sudah Digunakan', 'error'), location.href='buatakunPeserta.php'</script>";
           return false;
         }
-        $sql = "INSERT INTO tbl_user VALUES ('null','$userName', '$password', '$noHp', '0', '$namaLengkap')";
+        $sql = "INSERT INTO tbl_user VALUES ('null','$userName', '$password', '$noHp', '1', '$namaLengkap')";
         $hasil = mysqli_query($koneksi, $sql);
 
         if(!$hasil){
@@ -70,7 +70,6 @@
       <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="namaLengkap">
       <label for="floatingInput">Nama Lengkap</label>
     </div>
-
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="userName">
       <label for="floatingInput">Username</label>
@@ -85,7 +84,7 @@
     </div>
 
     <button class="w-100 btn btn-lg btn-primary" id="tombol" type="submit" name="submit">Masuk</button>
-    <p class="buatAkun">Sudah punya akun? <a href="login.php">Login</a></p>
+    <p class="buatAkun">Sudah punya akun? <a href="loginPeserta.php">Login</a></p>
   </form>
 </main>
 

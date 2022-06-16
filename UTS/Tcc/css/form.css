@@ -19,8 +19,8 @@
     filter: blur(6px);
 }
 
-.jumbotronGame{
-    background-image: url(../img/game.jpg);
+.jumbotronProduct{
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url(../Img/productPage.jpg);
     background-size: cover;
     width: auto;
     height: 668px;

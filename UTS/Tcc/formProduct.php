@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION["userName"]) & ($_SESSION["level"]!= 1)){
+    header('location:loginPeserta.php');
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +17,7 @@
     <link rel="stylesheet" href="css/form.css">
     <!-- js bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <title>TCC Game Competition</title>
+    <title>TCC Poster Competition</title>
     <link rel="shortcut icon" href="img/1x/logo.png">
 </head>
 <body>
@@ -22,15 +29,15 @@
     </nav>
     <!-- end navbar -->
     <!-- jumbotron -->
-    <div class="jumbotronGame">
+    <div class="jumbotronProduct">
     </div>
-    <h1 class="judul justify-content-center">TCC GAME COMPETITION</h1>
+    <h1 class="judul justify-content-center">TCC DESIGN PRODUCT COMPETITION</h1>
     <h6 class="subjudul justify-content-center">Asah kemampuanmu dengan ikuti berbagai perlombaan di Trunojoyo Creative Competition dan menamngkan banyak hadiah</h6>
     <!-- form -->
     <div class="container">
         <h1 class="judul2 justify-content-center">DAFTARKAN TIM</h1>
-        <form action="actionGame.php" method="post">
-        <div class="row">
+        <form action="actionProduct.php" method="post" enctype="multipart/form-data">
+            <div class="row">
               <div class="col">
                 <label for="" class="form-label">Nama Tim</label>
                 <input type="text" class="form-control" id="namatim" name="namaTim" required>
@@ -55,22 +62,23 @@
             <div class="row">
                 <div class="col">
                     <label for="" class="form-label">Nama Anggota 1</label>
-                    <input type="text" class="form-control" id="namaAgt1" name="namaAgt1" required>
-                    <label for="" class="form-label">Nama Anggota 3</label>
-                    <input type="text" class="form-control" id="namaAgt3" name="namaAgt3" required>
-                    <label for="" class="form-label">Nama Anggota 5</label>
-                    <input type="text" class="form-control" id="namaAgt5" name="namaAgt5" required>
+                    <input type="text" class="form-control" id="namaAgt1" name="namaAgt1" required> 
                 </div>
                 <div class="col">
                     <label for="" class="form-label">Nama Anggota 2</label>
                     <input type="text" class="form-control" id="namaAgt2" name="namaAgt2" required>
-                    <label for="" class="form-label">Nama Anggota 4</label>
-                    <input type="text" class="form-control" id="namaAgt4" name="namaAgt4" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary shadow justify-content-end" id="tombol2"><b>Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
-                <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
-              </svg></b></button>
+            <h1 class="judul2 justify-content-center">KUMPULKAN KARYA</h1>
+            <label for="" class="form-label">Upload Karya</label>
+            <input type="file" class="form-control" id="inputGroupFile01" name="karya" required>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Masukkan Deskripsi" id="floatingTextarea2" style="height: 300px" name="deskripsi" require></textarea>
+                <label for="floatingTextarea2">Masukkan Deskripsi</label>
+            </div>
+                <button type="submit" class="btn btn-primary shadow justify-content-end" id="tombolUIPoster"><b>Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
+                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
+                  </svg></b></button>
         </form>
     </div>
     <!-- end form -->

@@ -16,7 +16,7 @@
     <title>Login Admin</title>
     
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="../css/signinJuri.css">
     <!-- my css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- css bootstrap -->
@@ -25,7 +25,7 @@
     
     
     <!-- Bootstrap core CSS -->
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Sweet alert -->
     <script src="sweetalert2.min.js"></script>
     <link rel="stylesheet" href="sweetalert2.min.css">
@@ -42,11 +42,11 @@
 
 
 <!-- Custom styles for this template -->
-<link href="signin.css" rel="stylesheet">
+<link href="../css/signin.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
-<?php
+  <?php
   if (isset($_POST['submit'])) {
       $userName = $_POST['userName'];
       $password = md5($_POST['password']);
@@ -59,7 +59,7 @@
           $_SESSION['userName'] = $row['userName'];
           $_SESSION['level'] = $row['level'];
           $_SESSION ['namaLengkap'] = $row['namaLengkap'];
-          header("Location: dashboard.php");
+          header("Location: juripage.php");
       } else {
           echo "<script>swal.fire('Gagal', 'Username atau password Anda salah. Silahkan coba lagi!', 'error')</script>";
       }
@@ -80,7 +80,7 @@
     </div>
 
     <button class="w-100 btn btn-lg btn-primary" id="tombol" name="submit" type="submit">Masuk</button>
-    <p class="buatAkun">Belum punya akun? <a href="buatAkun.php">Buat Akun</a></p>
+    <p class="buatAkun">Hubungi Admin Jika Tidak Dapat Login!</p>
   </form>
 </main>
 

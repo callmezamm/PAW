@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION["userName"]) || ($_SESSION["level"]!= 1)){
+    header('location:loginPeserta.php');
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

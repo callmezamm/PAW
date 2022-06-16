@@ -12,7 +12,7 @@
 </head>
 <body>
 <?php
-    include "koneksi.php";
+    include 'koneksi.php';
 
     $namaTim = $_POST['namaTim'];
     $institusi = $_POST['institusi'];
@@ -21,11 +21,15 @@
     $hp = $_POST['hp'];
     $namaAgt1 = $_POST['namaAgt1'];
     $namaAgt2 = $_POST['namaAgt2'];
-    $namaAgt3 = $_POST['namaAgt3'];
-    $namaAgt4 = $_POST['namaAgt4'];
-    $namaAgt5 = $_POST['namaAgt5'];
+    $karya = $_FILES['karya']["name"];
+    $pisahkan = explode('.', $karya); 
+    $ekstensi =  strtolower(end($pisahkan));
+    $file_tmp = $_FILES['karya']['tmp_name'];
+    $karyaImg = $namaTim.'PRODUCT'.'.'.$ekstensi;
+    $deskripsi = $_POST['deskripsi'];
 
-    $sql = "INSERT INTO pendaftaran VALUES ('null','game','$namaTim','$institusi','$namaKet','$email','$hp','$namaAgt1','$namaAgt2','$namaAgt3','$namaAgt4','$namaAgt5','','','')";
+    move_uploaded_file($file_tmp, 'imguser/'.$karyaImg);
+    $sql = "INSERT INTO pendaftaran VALUES ('null','product','$namaTim','$institusi','$namaKet','$email','$hp','$namaAgt1','$namaAgt2','$deskripsi','$karyaImg','')";
     $hasil = mysqli_query($koneksi, $sql);
     if(!$hasil){
         echo "<script>swal.fire('Waduhhh', 'Gagal Masuk Lomba, Cek Inputanmu!', 'error')</script>";

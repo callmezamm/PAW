@@ -6,10 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Buat Akun Admin</title>
+    <title>Buat Akun Juri TCC</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-    <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="../css/signinJuri.css">
     <!-- my css -->
     <link rel="stylesheet" href="../css/style.css">
      <!-- css bootstrap -->
@@ -51,20 +51,20 @@
           echo "<script>swal.fire('Gagal', 'Username Sudah Digunakan', 'error'), location.href='buatAkun.php'</script>";
           return false;
         }
-        $sql = "INSERT INTO tbl_user VALUES ('null','$userName', '$password', '$noHp', '0', '$namaLengkap')";
+        $sql = "INSERT INTO tbl_user VALUES ('null','$userName', '$password', '$noHp', '2', '$namaLengkap')";
         $hasil = mysqli_query($koneksi, $sql);
 
         if(!$hasil){
           echo "<script>swal.fire('Gagal', 'Gagal Membuat Akun', 'error')</script>";
         }else{
-          echo "<script>swal.fire('Yuhuuu', 'Berhasil Membuat Akun', 'success')</script>";
+          echo "<script>swal.fire('Yuhuuu', 'Berhasil Membuat Akun', 'success'), location.href='juriDash.php'</script>";
         }
       }
       ?>
     
 <main class="form-signin">
   <form method="POST">
-    <h1 class="h3 mb-3 fw-normal"><b>Buat Akun</b></h1>
+    <h1 class="h3 mb-3 fw-normal"><b>Buat Akun Juri</b></h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="namaLengkap">
@@ -85,7 +85,6 @@
     </div>
 
     <button class="w-100 btn btn-lg btn-primary" id="tombol" type="submit" name="submit">Masuk</button>
-    <p class="buatAkun">Sudah punya akun? <a href="login.php">Login</a></p>
   </form>
 </main>
 

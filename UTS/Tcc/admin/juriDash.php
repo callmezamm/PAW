@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION["namaLengkap"]) || $_SESSION["level"] != 0) {
+  if(!isset($_SESSION["namaLengkap"])){
     header('location:login.php');
     exit;
   }
@@ -69,7 +69,7 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="dashboard.php">
+            <a class="nav-link" aria-current="page" href="dashboard.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
               <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z"/>
               </svg> Dashboard
@@ -98,7 +98,7 @@
             </a>
           </li><br>
           <li class="nav-item">
-            <a class="nav-link" href="kelolaAkun.php">
+            <a class="nav-link active" href="kelolaAkun.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -113,120 +113,51 @@
         <h1 class="h2">Dashboard</h1>
         <h3>Selamat Datang, <?= $_SESSION['namaLengkap']?></h3>
       </div>
-        <div class="hstack gap-3">
-          <div class="card" style="width: 18rem;">
-            <img src="../img/UIUX.jpg" class="card-img-top" alt="posterdesign" height="200px" width="auto">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #303030;">UI/UX Data</h5>
-              <a href="uiuxDash.php" class="btn btn-primary">Buka</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="../img/posterdesign.jpg" class="card-img-top" alt="posterdesign" height="200px" width="auto">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #303030;">Poster Data</h5>
-              <a href="posterDash.php" class="btn btn-primary">Buka</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="../img/productPage.jpg" class="card-img-top" alt="posterdesign" height="200px" width="auto">
-            <div class="card-body">
-              <h5 class="card-title" style="color: #303030;">Product Design Data</h5>
-              <a href="productdash.php" class="btn btn-primary">Buka</a>
-            </div>
-          </div>
-        </div><br><br><br>
-        <?php
-      include 'koneksi.php';
+      <?php
+        include 'koneksi.php';
 
-      $poster="SELECT namaTim, kategori, institusi, nilai FROM pendaftaran WHERE kategori = 'poster' order by nilai desc";
-      $resultp = mysqli_query($koneksi, $poster);
-
-      $uiux ="SELECT namaTim, kategori, institusi, nilai FROM pendaftaran WHERE kategori = 'uiux' order by nilai desc";
-      $resultu = mysqli_query($koneksi, $uiux);   
-      
-      $product ="SELECT namaTim, kategori, institusi, nilai FROM pendaftaran WHERE kategori = 'product' order by nilai desc";
-      $resultpr = mysqli_query($koneksi, $product);
-    ?>
-      <center>
-        <h1><b>LEADERBOARD</b></h1>
-        <h4><b>Peringkat Tim Berdasarkan Nilai di Setiap Cabang Lomba</b></h4><br>
-      </center>
-      <table class="table table-striped-columns">
-              <thead>
-                <tr>
-                  <th colspan="4" class="table-success">POSTER</th>
-                </tr>
-                <tr class="table-success">
-                  <th>NO</th>
-                  <th>Nama Tim</th>
-                  <th>Institusi</th>
-                  <th>Skor</th>
-                </tr>
-                <?php
-                $num = 1;
-                    while($row = mysqli_fetch_array($resultp)){
-                ?>
-                <tr>
-                  <td><?=$num; ?></td>
-                  <td><?=$row['namaTim']; ?></td>
-                  <td><?=$row['institusi']; ?></td>
-                  <td><?=$row['nilai']; ?></td>
-                </tr>
-                <?php $num++;}
-                ?>
-              </thead>
-      </table><br><br><br>
-      <table class="table table-striped-columns">
-              <thead>
-                <tr>
-                  <th colspan="4" class="table-danger">PRODUCT DESIGN</th>
-                </tr>
-                <tr class="table-danger">
-                  <th>NO</th>
-                  <th>Nama Tim</th>
-                  <th>Institusi</th>
-                  <th>Skor</th>
-                </tr>
-                <?php
-                $num = 1;
-                    while($row = mysqli_fetch_array($resultu)){
-                ?>
-                <tr>
-                  <td><?=$num; ?></td>
-                  <td><?=$row['namaTim']; ?></td>
-                  <td><?=$row['institusi']; ?></td>
-                  <td><?=$row['nilai']; ?></td>
-                </tr>
-                <?php $num++;}
-                ?>
-              </thead>
-      </table><br><br><br>
-      <table class="table table-striped-columns">
-              <thead>
-                <tr>
-                  <th colspan="4" class="table-primary">USER INTERFACE AND USER EXPERIENT</th>
-                </tr>
-                <tr class="table-primary">
-                  <th>NO</th>
-                  <th>Nama Tim</th>
-                  <th>Institusi</th>
-                  <th>Skor</th>
-                </tr>
-                <?php
-                $num = 1;
-                    while($row = mysqli_fetch_array($resultpr)){
-                ?>
-                <tr>
-                  <td><?=$num; ?></td>
-                  <td><?=$row['namaTim']; ?></td>
-                  <td><?=$row['institusi']; ?></td>
-                  <td><?=$row['nilai']; ?></td>
-                </tr>
-                <?php $num++;}
-                ?>
-              </thead>
-      </table><br><br><br>
+        $sql="SELECT id, userName, noHp, namaLengkap FROM tbl_user WHERE level = '2'";
+        $hasil = mysqli_query($koneksi, $sql);
+      ?>
+        <a href="buatakunjuri.php">
+            <button class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg> Tambah Akun Juri
+            </button>
+        </a>
+      <br><br><div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Nomor Telephone</th>
+              <th scope="col">Nama Lengkap</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <?php
+              while($row = mysqli_fetch_array($hasil)){
+          ?>
+          <tbody>
+              <td><?=$row['id']; ?></td>
+              <td><?=$row['userName']; ?></td>
+              <td><?=$row['noHp']; ?></td>
+              <td><?=$row['namaLengkap']; ?></td>
+              <td>
+                <a href="editAkun.php?id=<?=$row['id']?>"><button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg> Edit Data</button></a>
+                <a href="delete.php?id=<?=$row['id']?>"><button type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                        </svg> DELETE</button></a>
+              </td>
+          </tbody>
+          <?php }
+          ?>
     </main>
   </div>
 </div>
