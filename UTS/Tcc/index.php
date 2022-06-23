@@ -172,7 +172,7 @@ if(isset($_SESSION['namaLengkap'])){
             <table class="table table-striped-columns">
               <thead>
                 <tr>
-                  <th colspan="4" class="table-danger">PRODUCT DESIGN</th>
+                  <th colspan="4" class="table-danger">USER INTERFACE & USER EXPERIENT</th>
                 </tr>
                 <tr class="table-danger">
                   <th>NO</th>
@@ -201,7 +201,7 @@ if(isset($_SESSION['namaLengkap'])){
             <table class="table table-striped-columns">
               <thead>
                 <tr>
-                  <th colspan="4" class="table-primary">USER INTERFACE AND USER EXPERIENT</th>
+                  <th colspan="4" class="table-primary">PRODUCT DESIGN</th>
                 </tr>
                 <tr class="table-primary">
                   <th>NO</th>

@@ -52,20 +52,20 @@
                 $hasil = mysqli_query($koneksi, $sql);
             ?>
             <form action="updateNilai.php" method="post">
-            <?php
-                while ($row = mysqli_fetch_array($hasil))
-                {
-            ?>
-            <center>
-              <br><br><br><img src="../imguser/<?php echo $row['karya']; ?>" style="width:300px;">
-              <p><?=$row['deskirpsi']; ?></p>
-            </center>
-                <input type="hidden" name="kodePend" value="<?php echo $row['kodePend']; ?>"
-                <label class="form-label">Nilai</label>
-                <input type="number" name="nilai" class="form-control"><br>
-                <button type="submit" class="btn btn-primary" id="tombol">Tambah Nilai</button>
-                <?php }
-                ?>
+              <?php
+                  while ($row = mysqli_fetch_array($hasil))
+                  {
+              ?>
+              <center>
+                <br><br><br><img src="../imguser/<?php echo $row['karya']; ?>" style="width:300px;">
+                <p><?=$row['deskirpsi']; ?></p>
+              </center>
+                  <input type="hidden" name="kodePend" value="<?php echo $row['kodePend']; ?>"
+                  <label class="form-label">Nilai</label>
+                  <input type="number" name="nilai" class="form-control"><br>
+                  <button type="submit" class="btn btn-primary" id="tombol">Tambah Nilai</button>
+                  <?php }
+                  ?>
             </form>
         </div>
     </section><br><br><br>
